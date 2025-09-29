@@ -106,13 +106,16 @@ class _VideoCallPageState extends State<VideoCallPage>
   Widget _buildVideoViews(VideoCallData data, RtcEngine engine) {
     return Stack(
       children: [
-        Positioned.fill(child: GestureDetector(
-            onTap: (){
+        Positioned.fill(
+          child: GestureDetector(
+            onTap: () {
               setState(() {
                 _isControlesVisibles = !_isControlesVisibles;
               });
             },
-            child: _buildRemoteVideo(data, engine))),
+            child: _buildRemoteVideo(data, engine),
+          ),
+        ),
         Positioned(
           top: 40,
           left: 10,
@@ -317,17 +320,41 @@ class _VideoCallPageState extends State<VideoCallPage>
                                     vertical: 12,
                                   ),
                                   child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                          "User${Random(100).nextInt(10000)}",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.all(5),
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.blue.withValues(
+                                                    alpha: 0.6),
+                                              ),
+                                              child: Icon(
+                                                Icons.person,
+                                                color: Colors.white,
+                                                size: 24,
+                                              ),
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text(
+                                              "User${Random(100).nextInt(10000)}",
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Icon(Icons.video_call_outlined),
                                           SizedBox(width: 20),
